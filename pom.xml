@@ -12,6 +12,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<modules>
+
+		<module>discovery-server</module>
 		<module>compradores-service</module>
 	</modules>
 
