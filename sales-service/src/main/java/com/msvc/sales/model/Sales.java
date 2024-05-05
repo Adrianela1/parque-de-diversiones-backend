@@ -4,17 +4,15 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
-
 @Document(value= "sales")
 @Builder
 @Data
 @NoArgsConstructor
 
-public class SalesModel {
+public class Sales {
     @Id
     private Long id;
-    private Long idBuyer;
-    private Long idGame;
+    private String idBuyer;
+    private String idGame;
     private String date;
 }

@@ -1,10 +1,11 @@
 package com.msvc.sales.controller;
 
 
-import com.msvc.sales.model.SalesModel;
-import com.msvc.sales.repository.SalesRepository;
+import com.msvc.sales.model.Sales;
+import com.msvc.sales.service.SalesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,32 +15,43 @@ import java.util.List;
 public class SalesController {
 
     @Autowired
-    private SalesRepository salesRepository;
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<SalesModel> getAllSales(){
-       salesRepository.findAll();
+    private SalesService salesService;
 
-        return List.of();
+    @GetMapping
+    public ResponseEntity<List<Sales>> getAllUsers() {
+        List<Sales> users = salesService.getAllSales();
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Sales> getUserById(@PathVariable Long id) {
+        Sales sales = salesService.getSalesById(id);
+        if (sales != null) {
+            return new ResponseEntity<>(sales, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.OK)
-    public void createSale( @RequestBody SalesModel saleModel) {
-        salesRepository.save(saleModel);
+    public ResponseEntity<Sales> createUser(@RequestBody Sales sales) {
+        Sales createdSales = salesService.createSales(sales);
+        return new ResponseEntity<>(createdSales, HttpStatus.CREATED);
     }
 
-    @PutMapping
-    @ResponseStatus(HttpStatus.OK)
-    public void updateSale(@RequestBody SalesModel saleModel) {
-        salesRepository.updateSale(saleModel);
-
+    @PutMapping("/{id}")
+    public ResponseEntity<Sales> updateUser(@PathVariable Long id, @RequestBody Sales salesDetails) {
+        Sales updatedSales = salesService.updateSales(id, salesDetails);
+        if (updatedSales != null) {
+            return new ResponseEntity<>(updatedSales, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
-    @DeleteMapping
-    @ResponseStatus(HttpStatus.OK)
-    public void deleteSale(@RequestBody SalesModel saleModel) {
-        salesRepository.delete(saleModel);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        salesService.deleteSales(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
 }
