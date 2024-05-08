@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: games-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/games-service
+    username: postgres
+    password: Abigail
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8085
