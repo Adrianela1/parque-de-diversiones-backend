@@ -14,7 +14,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<modules>
-
+      <module>sales-service</module>
 		  <module>compradores-service</module>
       <module>discovery-server</module>
       <module>users-service</module>
