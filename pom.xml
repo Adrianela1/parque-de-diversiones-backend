@@ -5,14 +5,22 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.5</version>git
+
+		<version>3.2.5</version>
+
 	</parent>
 	<groupId>com.msvc.proyectopark</groupId>
 	<artifactId>parque-diversiones</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<modules>
-		<module>employees-service</module>
+
+		  <module>compradores-service</module>
+      <module>discovery-server</module>
+      <module>users-service</module>
+      <module>tickets-service</module>
+      <module>employees-service</module>
+
 	</modules>
 
 	<packaging>pom</packaging>
@@ -24,3 +32,4 @@
 	</properties>
 
 </project>
+
