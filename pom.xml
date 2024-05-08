@@ -5,26 +5,31 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
+
 		<version>3.2.5</version>
-		<relativePath/> <!-- lookup parent from repository -->
+
 	</parent>
 	<groupId>com.msvc.proyectopark</groupId>
 	<artifactId>parque-diversiones</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>parque-diversiones</name>
-	<description>Demo project for Spring Boot</description>
+
+	<modules>
+      <module>sales-service</module>
+		  <module>compradores-service</module>
+      <module>discovery-server</module>
+      <module>users-service</module>
+      <module>tickets-service</module>
+      <module>employees-service</module>
+
+	</modules>
 
 	<packaging>pom</packaging>
 
-	<modules>
-		<module>sales-service</module>
-	</modules>
 	<properties>
-		<maven.compiler.sources>17</maven.compiler.sources>
+		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
-		<project.build.sourceEnconding>UTF-8</project.build.sourceEnconding>
-
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-
 </project>
+
