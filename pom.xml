@@ -12,9 +12,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<modules>
+
 		  <module>compradores-service</module>
-            <module>users-service</module>
-        <module>tickets-service</module>
+      <module>discovery-server</module>
+      <module>users-service</module>
+      <module>tickets-service</module>
+
 	</modules>
 
 	<packaging>pom</packaging>
