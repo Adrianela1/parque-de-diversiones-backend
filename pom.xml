@@ -5,7 +5,9 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
+
 		<version>3.2.5</version>
+
 	</parent>
 	<groupId>com.msvc.proyectopark</groupId>
 	<artifactId>parque-diversiones</artifactId>
@@ -17,10 +19,12 @@
       <module>discovery-server</module>
       <module>users-service</module>
       <module>tickets-service</module>
+      <module>employees-service</module>
 
 	</modules>
 
 	<packaging>pom</packaging>
+
 	<properties>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
