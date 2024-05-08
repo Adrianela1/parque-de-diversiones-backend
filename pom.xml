@@ -13,8 +13,11 @@
 
 	<modules>
 
-		<module>discovery-server</module>
-		<module>compradores-service</module>
+		  <module>compradores-service</module>
+      <module>discovery-server</module>
+      <module>users-service</module>
+      <module>tickets-service</module>
+
 	</modules>
 
 	<packaging>pom</packaging>
@@ -25,3 +28,4 @@
 	</properties>
 
 </project>
+
