@@ -24,6 +24,10 @@ public class CompradoresService {
         return compradoresRepository.findById(id).orElse(null);
     }
 
+    public List<Compradores> getCompradoresByGameId(String gameId) {
+        return compradoresRepository.findByGameId(gameId);
+    }
+
     public Compradores createCompradores(Compradores compradores) {
         return compradoresRepository.save(compradores);
     }

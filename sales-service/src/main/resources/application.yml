@@ -8,7 +8,7 @@ spring:
       database: sales-service
 
   application:
-    name: CALIFICACION-SERVICE
+    name: SALES-SERVICE
 
 eureka:
   instance:

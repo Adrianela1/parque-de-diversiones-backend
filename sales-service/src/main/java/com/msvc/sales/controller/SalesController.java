@@ -1,7 +1,7 @@
 package com.msvc.sales.controller;
 
 
-import com.msvc.sales.model.Sales;
+import com.msvc.sales.models.Sales;
 import com.msvc.sales.service.SalesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,14 +24,25 @@ public class SalesController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Sales> getUserById(@PathVariable Long id) {
-        Sales sales = salesService.getSalesById(id);
+    public ResponseEntity<Sales> getUserById(@PathVariable String id) {
+        Sales sales = salesService.getSalesByIdSales(id);
         if (sales != null) {
             return new ResponseEntity<>(sales, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/buyer/{buyerId}")
+    public ResponseEntity<Sales> getUserByBuyerId(@PathVariable String buyerId) {
+        Sales sales = salesService.getSalesByIdBuyer(buyerId);
+        if (sales != null) {
+            return new ResponseEntity<>(sales, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 
     @PostMapping
     public ResponseEntity<Sales> createUser(@RequestBody Sales sales) {

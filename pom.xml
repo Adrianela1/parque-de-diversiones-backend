@@ -14,7 +14,7 @@
     <modules>
         <module>games-service</module>
         <module>sales-service</module>
-		    <module>compradores-service</module>
+        <module>compradores-service</module>
         <module>discovery-server</module>
         <module>users-service</module>
         <module>tickets-service</module>

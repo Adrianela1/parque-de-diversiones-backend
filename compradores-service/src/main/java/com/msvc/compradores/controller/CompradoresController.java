@@ -23,7 +23,7 @@ public class CompradoresController {
         return new ResponseEntity<>(compradores, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<Compradores> getUserById(@PathVariable Long id) {
         Compradores compradores = compradoresService.getCompradoresById(id);
         if (compradores != null) {
@@ -31,6 +31,11 @@ public class CompradoresController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("/games/{gameId}")
+    public ResponseEntity<List<Compradores>> getUserByGameId(@PathVariable String gameId) {
+        return ResponseEntity.ok(compradoresService.getCompradoresByGameId(gameId));
     }
 
     @PostMapping

@@ -5,7 +5,7 @@ spring:
   application:
     name: COMPRADORES-SERVICE
   datasource:
-    url: jdbc:mysql://localhost:3306/microservicios
+    url: jdbc:mysql://localhost:3306/compradores
     username: root
     password: Altecpower1
     driver: com.mysql.cj.jdbc.Driver
