@@ -1,5 +1,7 @@
 package com.msvc.users.controller;
 
+import com.msvc.users.external.services.EmployeesService;
+import com.msvc.users.model.Employees;
 import com.msvc.users.model.User;
 import com.msvc.users.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,8 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private EmployeesService employeesService;
 
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
@@ -47,9 +51,16 @@ public class UserController {
         }
     }
 
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable String id) {
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PostMapping("/{userId}/employees")
+    public ResponseEntity<Employees> createEmployeeForUser(@PathVariable String userId, @RequestBody Employees employee) {
+        return userService.createEmployeeForUser(userId, employee);
+    }
 }
+

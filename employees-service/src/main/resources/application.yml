@@ -1,1 +1,29 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/employees-service
+    username: postgres
+    password: Altecpower1
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
 
+
+  application:
+    name: EMPLOYEES-SERVICE
+
+server:
+  port: 8086
+
+eureka:
+  instance:
+    prefer-ip-address: true # Corrección aquí
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
