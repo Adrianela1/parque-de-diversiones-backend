@@ -11,7 +11,6 @@ public interface SalesRepository  extends MongoRepository <Sales, Long>{
 
     List<Sales> findByGameId(String gameId);
 
-
     Sales findBySalesId(String id);
 
 }

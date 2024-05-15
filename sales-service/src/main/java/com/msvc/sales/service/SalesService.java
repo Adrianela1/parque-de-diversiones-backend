@@ -40,7 +40,7 @@ public class SalesService {
     public Sales getSalesByIdBuyer(String buyerId) {
         Sales sales = salesRepository.findByBuyerId(buyerId);
         Compradores compradoresDelJuego = restTemplate.getForObject(
-                "http://localhost:8081/api/compradores/id/" + sales.getBuyerId(),
+                "http://COMPRADORES-SERVICE/api/compradores/id/" + sales.getBuyerId(),
                 Compradores.class
         );
         logger.info("{}", compradoresDelJuego);
