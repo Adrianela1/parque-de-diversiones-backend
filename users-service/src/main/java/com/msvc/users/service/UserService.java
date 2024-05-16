@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -54,13 +55,22 @@ public class UserService {
         }
     }
 
+
+
     public boolean userExists(String userId) {
         return userRepository.existsById(userId);
     }
 
 
-
-
+    public User getUserAndEmployees(String userId) {
+        User user = userRepository.findById(userId).orElse(null);
+        // Verifica si el usuario existe
+        if (user != null) {
+            List<Employees> employees = employeesService.getEmployesByUserId(userId);
+            user.setEmployees(employees);
+        }
+        return user;
+    }
 
     public void deleteUser(String id) {
         userRepository.deleteById(id);

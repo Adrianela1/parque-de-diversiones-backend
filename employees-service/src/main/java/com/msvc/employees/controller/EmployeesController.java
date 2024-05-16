@@ -22,7 +22,7 @@ public class EmployeesController {
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<Employees> getEmployeesById(@PathVariable Long id) {
         Employees employees = employeesService.getEmployeesById(id);
         if (employees != null) {
@@ -30,6 +30,11 @@ public class EmployeesController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Employees>> getEmployeesById(@PathVariable String userId) {
+        return ResponseEntity.ok(employeesService.getEmployeesByUserId(userId));
     }
 
     @PostMapping

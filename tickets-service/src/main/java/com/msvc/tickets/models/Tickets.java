@@ -22,8 +22,7 @@ public class Tickets {
     private int id;
 
     @Column(name = "date", nullable = false)
-    @Temporal (TemporalType.DATE)
-    private LocalDate date;
+    private String date;
 
     @Column(name = "hour", nullable = false, length = 45)
     private String hour;
@@ -33,44 +32,4 @@ public class Tickets {
 
     @Column(name = "id_buyer", nullable = false, length = 45)
     private String id_buyer;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public String getHour() {
-        return hour;
-    }
-
-    public void setHour(String hour) {
-        this.hour = hour;
-    }
-
-    public String getId_game() {
-        return id_game;
-    }
-
-    public void setId_game(String id_game) {
-        this.id_game = id_game;
-    }
-
-    public String getId_buyer() {
-        return id_buyer;
-    }
-
-    public void setId_buyer(String id_buyer) {
-        this.id_buyer = id_buyer;
-    }
 }

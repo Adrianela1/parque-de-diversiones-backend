@@ -17,7 +17,6 @@ public class Sales {
     @Id
     private String salesId;
     private String buyerId;
-    private String gameId;
     private String date;
 
     @Transient

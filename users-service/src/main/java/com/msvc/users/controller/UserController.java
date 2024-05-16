@@ -52,7 +52,7 @@ public class UserController {
     }
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/userId/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable String id) {
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -61,6 +61,12 @@ public class UserController {
     @PostMapping("/{userId}/employees")
     public ResponseEntity<Employees> createEmployeeForUser(@PathVariable String userId, @RequestBody Employees employee) {
         return userService.createEmployeeForUser(userId, employee);
+    }
+
+    @GetMapping("/employees/{userId}")
+    public ResponseEntity<User> obtenerUserAndEmployees(@PathVariable String userId){
+        User user = userService.getUserAndEmployees(userId);
+        return ResponseEntity.ok(user);
     }
 }
 

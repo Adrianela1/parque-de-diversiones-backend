@@ -23,6 +23,10 @@ public class EmployeesService {
             return employeesRepository.findById(id).orElse(null);
         }
 
+        public List<Employees> getEmployeesByUserId(String userId){
+            return employeesRepository.findByUserId(userId);
+        }
+
         public Employees createEmployees(Employees employees) {
             return employeesRepository.save(employees);
         }

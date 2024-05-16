@@ -17,6 +17,5 @@ public class Compradores {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String game;
     private String gameId;
 }

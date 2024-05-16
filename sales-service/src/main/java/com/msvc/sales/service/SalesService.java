@@ -67,3 +67,5 @@ public class SalesService {
     }
 }
 
+
+// Crear metodo para consultar todas las ventas de una fecha determinada
