@@ -1,5 +1,6 @@
 package com.msvc.employees.controller;
 
+import com.msvc.employees.dto.EmployeesAndGameDto;
 import com.msvc.employees.model.Employees;
 import com.msvc.employees.service.EmployeesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,13 @@ public class EmployeesController {
         List<Employees> employees = employeesService.getAllEmployees();
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
+
+    @GetMapping("/games")
+    public ResponseEntity<List<EmployeesAndGameDto>> getAllEmployeesAndGame() {
+        List<EmployeesAndGameDto> employeesAndGame = employeesService.getAllEmployeesAndGame();
+        return new ResponseEntity<>(employeesAndGame, HttpStatus.OK);
+    }
+
 
     @GetMapping("/id/{id}")
     public ResponseEntity<Employees> getEmployeesById(@PathVariable Long id) {

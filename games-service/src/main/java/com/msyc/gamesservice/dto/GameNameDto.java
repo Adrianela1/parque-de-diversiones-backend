@@ -1,4 +1,5 @@
-package com.msvc.users.model;
+package com.msyc.gamesservice.dto;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,11 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-public class Employees {
+public class GameNameDto {
 
     private Long id;
-    private String name;
-    private String idGame;
-    private String userId;
+    private String gameName;
 
 }

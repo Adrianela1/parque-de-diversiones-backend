@@ -12,15 +12,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class GamesModel {
+public class Games {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
     private Long id;
-    private String game_name;
-    private String operating_hours;
+    private String gameName;
+    private String operatingHours;
     private Boolean available;
 
 }

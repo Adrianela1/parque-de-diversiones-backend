@@ -1,5 +1,6 @@
 package com.msvc.employees.service;
 
+import com.msvc.employees.dto.EmployeesAndGameDto;
 import com.msvc.employees.model.Employees;
 import com.msvc.employees.repository.EmployeesRepository;
 import org.springframework.beans.BeanUtils;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeesService {
@@ -18,6 +20,11 @@ public class EmployeesService {
         public List<Employees> getAllEmployees() {
             return employeesRepository.findAll();
         }
+
+    public List<EmployeesAndGameDto> getAllEmployeesAndGame() {
+        List<Employees> employeesList = employeesRepository.findAll();
+
+    }
 
         public Employees getEmployeesById(Long id) {
             return employeesRepository.findById(id).orElse(null);
@@ -39,6 +46,9 @@ public class EmployeesService {
             }
             return null;
         }
+
+
+
 
         public void deleteEmployees(Long id) {
             employeesRepository.deleteById(id);
