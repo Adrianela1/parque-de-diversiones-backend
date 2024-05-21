@@ -33,9 +33,6 @@ public class SalesService {
         return salesRepository.findBySalesId(id);
     }
 
-    public List<Sales> getSalesByIdGame(String gameId) {
-        return salesRepository.findByGameId(gameId);
-    }
 
     public Sales getSalesByIdBuyer(String buyerId) {
         Sales sales = salesRepository.findByBuyerId(buyerId);

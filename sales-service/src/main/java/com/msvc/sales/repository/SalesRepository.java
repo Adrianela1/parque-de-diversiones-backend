@@ -9,7 +9,7 @@ public interface SalesRepository  extends MongoRepository <Sales, Long>{
 
     Sales findByBuyerId(String buyerId);
 
-    List<Sales> findByGameId(String gameId);
+
 
     Sales findBySalesId(String id);
 

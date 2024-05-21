@@ -1,0 +1,41 @@
+global:
+  scrape_interval: 10s
+  evaluation_interval: 10s
+
+scrape_configs:
+  - job_name: 'compradores-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['localhost:8082']
+        labels:
+          application: 'Compradores Service Application'
+  - job_name: 'employees-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['localhost:8086']
+        labels:
+          application: 'Employees Service Application'
+  - job_name: 'games-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['localhost:8085']
+        labels:
+          application: 'Games Service Application'
+  - job_name: 'sales-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'localhost:8083' ]
+        labels:
+          application: 'Sales Service Application'
+  - job_name: 'tickets-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'localhost:8081' ]
+        labels:
+          application: 'Tickets Service Application'
+  - job_name: 'users-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'localhost:8087' ]
+        labels:
+          application: 'Users Service Application'
