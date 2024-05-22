@@ -19,6 +19,7 @@
         <module>users-service</module>
         <module>tickets-service</module>
         <module>employees-service</module>
+        <module>message-service</module>
     </modules>
 
     <packaging>pom</packaging>
