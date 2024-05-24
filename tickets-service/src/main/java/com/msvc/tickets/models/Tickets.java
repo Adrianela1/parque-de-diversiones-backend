@@ -18,18 +18,9 @@ import java.time.LocalDate;
 public class Tickets {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
-
-    @Column(name = "date", nullable = false)
+    private Long id;
     private String date;
-
-    @Column(name = "hour", nullable = false, length = 45)
     private String hour;
-
-    @Column(name = "id_game", nullable = false, length = 45)
-    private String id_game;
-
-    @Column(name = "id_buyer", nullable = false, length = 45)
-    private String id_buyer;
+    private String gameName;
+    private String correoComprador;
 }

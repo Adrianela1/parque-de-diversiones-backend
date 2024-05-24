@@ -1,5 +1,6 @@
 package com.msvc.tickets.controller;
 
+import com.msvc.tickets.dto.CantidadEntradasVendidasJuegoDto;
 import com.msvc.tickets.models.Tickets;
 import com.msvc.tickets.service.TicketsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping ("/api/tickets/")
+@RequestMapping ("/api/tickets")
 public class TicketsController {
 
     @Autowired
@@ -23,10 +24,16 @@ public class TicketsController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Tickets> getTicketsById(@PathVariable Integer id){
+    public ResponseEntity<Tickets> getTicketsById(@PathVariable Long id){
         return ticketsService.findTicketsById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/gameAndtickets/{date}")
+    public ResponseEntity<List<CantidadEntradasVendidasJuegoDto>> getTicketsAndGameByDate(@PathVariable String date){
+        List<CantidadEntradasVendidasJuegoDto> ticektsAndGames = ticketsService.findTicketsAndGameByDate(date);
+        return new ResponseEntity<>(ticektsAndGames, HttpStatus.OK);
     }
 
     @PostMapping
@@ -36,7 +43,7 @@ public class TicketsController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Tickets> updateTickets(@PathVariable Integer id, @RequestBody Tickets ticketsDetails) {
+    public ResponseEntity<Tickets> updateTickets(@PathVariable Long id, @RequestBody Tickets ticketsDetails) {
         Tickets updatedTickets = ticketsService.updateTickets(id, ticketsDetails);
         if (updatedTickets != null) {
             return new ResponseEntity<>(updatedTickets, HttpStatus.OK);
@@ -46,7 +53,7 @@ public class TicketsController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTickets(@PathVariable Integer id) {
+    public ResponseEntity<Void> deleteTickets(@PathVariable Long id) {
         ticketsService.deleteTickets(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

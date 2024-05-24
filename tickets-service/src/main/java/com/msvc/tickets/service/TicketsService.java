@@ -1,11 +1,13 @@
 package com.msvc.tickets.service;
 
+import com.msvc.tickets.dto.CantidadEntradasVendidasJuegoDto;
 import com.msvc.tickets.models.Tickets;
 import com.msvc.tickets.repositories.TicketsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -19,23 +21,35 @@ public class TicketsService {
     }
 
     //Get para obtener los tickets por id
-    public Optional<Tickets> findTicketsById (Integer id){
+    public Optional<Tickets> findTicketsById (Long id){
         return ticketsRepository.findById(id);
     }
+
+    public List<CantidadEntradasVendidasJuegoDto> findTicketsAndGameByDate(String date){
+        List<Tickets> ticketsList = ticketsRepository.findTicketsByDate(date);
+        return ticketsList.stream()
+                .map(tickets -> CantidadEntradasVendidasJuegoDto.builder()
+                        .id(tickets.getId())
+                        .gameName(tickets.getGameName())
+                        .date(tickets.getDate())
+                        .build())
+                .collect(Collectors.toList());
+    }
+
     //Post
     public Tickets saveTickets(Tickets tickets) {
         return ticketsRepository.save(tickets);
     }
     //put
-    public Tickets updateTickets (Integer id, Tickets ticketsDetails){
+    public Tickets updateTickets (Long id, Tickets ticketsDetails){
         Optional <Tickets> optionalTickets = ticketsRepository.findById(id);
 
         if (optionalTickets.isPresent()) {
             Tickets existingTickets = optionalTickets.get();
             existingTickets.setDate(ticketsDetails.getDate());
             existingTickets.setHour(ticketsDetails.getHour());
-            existingTickets.setId_game(ticketsDetails.getId_game());
-            existingTickets.setId_buyer(ticketsDetails.getId_buyer());
+            existingTickets.setGameName(ticketsDetails.getGameName());
+            existingTickets.setCorreoComprador(ticketsDetails.getCorreoComprador());
             return ticketsRepository.save(existingTickets);
         } else {
             return null;
@@ -43,7 +57,7 @@ public class TicketsService {
     }
 
     //Delete
-    public void deleteTickets(Integer id) {
+    public void deleteTickets(Long id) {
         ticketsRepository.deleteById(id);
     }
 }
