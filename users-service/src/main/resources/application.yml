@@ -2,6 +2,12 @@ server:
   port: 8087
 
 spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
   data:
     mongodb:
       uri: mongodb://localhost:27017
@@ -25,3 +31,7 @@ management:
     web:
       exposure:
         include: prometheus
+
+msvc:
+  queue:
+    name: cola1

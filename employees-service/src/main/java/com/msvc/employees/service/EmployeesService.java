@@ -26,7 +26,7 @@ public class EmployeesService {
         return employeesList.stream()
                 .map(employee -> EmployeesAndGameDto.builder()
                         .name(employee.getName())
-                        .idGame(employee.getIdGame())
+                        .gameName(employee.getGameName())
                         .build())
                 .collect(Collectors.toList());
     }

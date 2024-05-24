@@ -1,9 +1,11 @@
 package com.msvc.users.service;
 
+import com.msvc.users.config.rabbitmq.Producer;
 import com.msvc.users.external.services.EmployeesService;
 import com.msvc.users.model.Employees;
 import com.msvc.users.model.User;
 import com.msvc.users.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.List;
 
+@Slf4j
 @Service
 public class UserService {
 
@@ -21,6 +24,9 @@ public class UserService {
 
     @Autowired
     private EmployeesService employeesService;
+
+    @Autowired
+    private Producer producer;
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
@@ -49,17 +55,22 @@ public class UserService {
             employee.setUserId(userId);
             // Crear el empleado utilizando el servicio de empleados externo
             Employees createdEmployee = employeesService.createEmpleado(employee);
+            enviarMensajeConRabbitMQ("Notificacion con RabbitMQ, Empleado creado con exito");
             return new ResponseEntity<>(createdEmployee, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-
-
     public boolean userExists(String userId) {
         return userRepository.existsById(userId);
     }
+
+    private void enviarMensajeConRabbitMQ(String message){
+        log.info("El mensaje '{}' ha sido enviado con exito", message);
+        producer.send(message);
+    }
+
 
 
     public User getUserAndEmployees(String userId) {

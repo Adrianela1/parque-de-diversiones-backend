@@ -22,6 +22,7 @@ public class TicketsService {
     public Optional<Tickets> findTicketsById (Integer id){
         return ticketsRepository.findById(id);
     }
+
     //Post
     public Tickets saveTickets(Tickets tickets) {
         return ticketsRepository.save(tickets);

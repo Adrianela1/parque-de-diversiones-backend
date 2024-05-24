@@ -39,3 +39,9 @@ scrape_configs:
       - targets: [ 'localhost:8087' ]
         labels:
           application: 'Users Service Application'
+  - job_name: 'message-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'localhost:8089' ]
+        labels:
+          application: 'Message Service Application'

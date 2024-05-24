@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @Builder
 public class EmployeesAndGameDto {
     private String name;
-    private String idGame;
+    private String gameName;
 }
